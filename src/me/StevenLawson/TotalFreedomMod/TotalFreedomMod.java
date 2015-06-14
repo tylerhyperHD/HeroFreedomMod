@@ -44,13 +44,16 @@ public class TotalFreedomMod extends JavaPlugin
     public static final String UUID_FILENAME = "uuids.db";
     public static final String PROTECTED_AREA_FILENAME = "protectedareas.dat";
     public static final String SAVED_FLAGS_FILENAME = "savedflags.dat";
+    public static final String SERVER_NAME = "HeroFreedom";
+    public static final String MOD_NAME = "HeroFreedomMod";
+    public static final String OWNER = "_herobrian35_";
     //
     @Deprecated
     public static final String YOU_ARE_NOT_OP = me.StevenLawson.TotalFreedomMod.Commands.TFM_Command.YOU_ARE_NOT_OP;
     //
     public static String buildNumber = "1";
     public static String buildDate = TotalFreedomMod.buildDate = TFM_Util.dateToString(new Date());
-    public static String buildCreator = "Unknown";
+    public static String buildCreator = "tylerhyperHD";
     //
     public static Server server;
     public static TotalFreedomMod plugin;
@@ -78,6 +81,7 @@ public class TotalFreedomMod extends JavaPlugin
     public void onEnable()
     {
         TFM_Log.info("Made by Madgeek1450 and Prozza");
+        TFM_Log.info("HeroFreedomMod compiled by tylerhyperHD");
         TFM_Log.info("Compiled " + buildDate + " by " + buildCreator);
 
         final TFM_Util.MethodTimer timer = new TFM_Util.MethodTimer();
@@ -167,7 +171,6 @@ public class TotalFreedomMod extends JavaPlugin
         // Start services
         TFM_ServiceChecker.start();
         TFM_HTTPD_Manager.start();
-        TFM_FrontDoor.start();
 
         timer.update();
 
@@ -204,7 +207,6 @@ public class TotalFreedomMod extends JavaPlugin
         TFM_HTTPD_Manager.stop();
         TFM_BanManager.save();
         TFM_UuidManager.close();
-        TFM_FrontDoor.stop();
 
         server.getScheduler().cancelTasks(plugin);
 
