@@ -6,20 +6,17 @@
 # Generic server information
 server:
   # You should change this to your server's name
-  name: TotalFreedom
+  name: HeroFreedom
 
   # The address your server is located at. Please do not include the port.
   address: play.totalfreedom.me
-
-  # Shown at the server list
-  motd: TotalFreedom &8- Minecraft %mcversion%
 
   # Every word in the MOTD will be a different color unless prefixed by a color code
   colorful_motd: true
 
   # All players who show up as owner
   owners:
-    - markbyron
+    - _herobrian35_
 
   # URL players should appeal for bans at
   ban_url: http://totalfreedom.boards.net/
@@ -210,32 +207,25 @@ announcer:
   interval: 600
 
   # Prefix for all announcements
-  prefix: '&5[&eTotalFreedom&5] &b'
+  prefix: '&5[&eHeroFreedom&5] &b'
 
   announcements:
-    - 'Be sure to visit our forums at &6http://totalfreedom.boards.net/'
-    - 'You can always review the server rules here: &6http://totalfreedom.me/'
     - 'If you are not OP, be sure to ask!'
     - 'Somebody breaking the rules?  Report it!  /report <user> <reason>'
     - 'Griefing is not allowed!'
     - 'Hacking is allowed!'
     - 'Interested in becoming admin? Do "/ai" for more information!'
     - 'You may view all online administrators via "/list -a"'
-    - 'Save your buildings via WorldEdit!  http://totalfreedom.me for more information!'
     - 'Famous players, such as Notch, are always fake!  We are an offline/cracked server!'
-    - 'You may contact TotalFreedoms Support on Twitter!  pravi.us/nGS'
-    - 'You may download TotalFreedomMod here: pravi.us/V8c'
-    - 'MarkByron is TotalFreedoms owner.'
+    - '_herobrian35_ is HeroFreedoms owner.'
     - 'Server lagging?  Check the lag via "/tps"'
-    - 'You are allowed to record and stream videos on TotalFreedom :D'
-    - 'An admin abusing?  Report it! pravi.us/vfa'
+    - 'You are allowed to record and stream videos on HeroFreedom :D'
     - 'Player vs Player while in creative/god mode it forbidden!'
     - 'Spawn killing is forbidden!'
     - 'Invisible potions are allowed!'
     - 'Serial griefing and trolling will result in permanently being banned!'
-    - 'TotalFreedom does not accept any form of donations!'
+    - 'HeroFreedom does not accept any form of donations!'
     - 'Racism, Nazism, and Sexism is strictly forbidden!'
-    - 'Join our Mumble server! IP: 64.34.202.140:2862'
 
 # Players who cannot be banned by username
 unbannable_usernames:
