@@ -1,7 +1,7 @@
-# TotalFreedomMod #
+The **FreedomOpMod: Remastered** is an all new type of freedom plugin, it takes the basic concepts and ideas of the TotalFreedomMod and executes them in different and more *flexible* ways. Whilst the FOPM: R may not be the most professionally and efficiently coded plugin, it gets the job done and only uses basic methods to do so making it far more flexible for newer developers to work with than the TFM. - Created and maintained by Camzie99. Got any ideas for the **FOPM: R** or have you found a bug? Be sure to post an issue in our tracker.
 
-TotalFreedomMod is a CraftBukkit server plugin designed primarily to support the [Official TotalFreedom Minecraft Server](http://totalfreedom.me/). However, you are more than welcome to adapt the source for your own server.
+The public version of the FOPM: R is up to date as of:
+**Friday 29th May 2015 1:19:10pm** *(BST)*
 
-This plugin was originally coded by StevenLawson (Madgeek1450), with Jerom van der Sar (Prozza) becoming heavily involved in its development some time later. It consists of over 85 custom coded commands and a large variety of distinguishable features not included in any other plugin. The plugin has since its beginning grown immensely. Together, with the main TotalFreedom server, TotalFreedomMod has a long-standing reputation of effectiveness whilst maintaining a clear feeling of openness towards the administrators and the players themselves.
-
-Please see [CONTRIBUTING.md](CONTRIBUTING.md) if you are interested in developing TotalFreedomMod. For information on how TotalFreedomMod is licensed, please see [LICENSE.md](LICENSE.md).
+You can get a compiled version here:
+https://bitbucket.org/Camzie99/fopm-r-public/downloads
