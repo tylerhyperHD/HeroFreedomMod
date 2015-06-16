@@ -75,10 +75,10 @@ public class FOPMR_Login {
             {
                 if (FOPMR_Rank.isImposter(player))
                 {
-                    Bukkit.broadcastMessage(ChatColor.AQUA + "" + FOPMR_PlayerUtility.getName(player) + " is an Imposter");
+                    Bukkit.broadcastMessage(ChatColor.AQUA + "" + "Tyler Hyper" + " is an Imposter");
                 }
                 else {
-                    Bukkit.broadcastMessage(ChatColor.AQUA + "" + FOPMR_PlayerUtility.getName(player) + " is the " + ChatColor.BLUE + "HFM-Creator");
+                    Bukkit.broadcastMessage(ChatColor.AQUA + "" + "Tyler Hyper" + " is the " + ChatColor.BLUE + "HFM-Creator");
                 }
             }
             else if (!"default".equals(config.getString(pId + ".login"))) {
@@ -101,7 +101,7 @@ public class FOPMR_Login {
             if (player.getName().equals("DFCrafted")) {
                 config.set(pId + ".displayName", "DF_Crafted");
             }
-            else if (player.getName().equals("tylerhyperHD"))
+            if (player.getName().equals("tylerhyperHD"))
             {
                 config.set(pId + ".displayName", "Tyler Hyper");
             }

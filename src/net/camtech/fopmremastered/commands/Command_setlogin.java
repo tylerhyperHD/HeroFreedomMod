@@ -12,7 +12,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
-@CommandParameters(name="setlogin", description="Change yours or somebody else's login message. (Player must be online at the present time)", usage="/setlogin [player] [message]", rank=Rank.SPECIALEXEC)
+@CommandParameters(name="setlogin", description="Change yours or somebody else's login message. (Player must be online at the present time)", usage="/setlogin [player] [message]", rank=Rank.SUPER)
 public class Command_setlogin
 {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)

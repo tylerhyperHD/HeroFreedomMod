@@ -47,7 +47,10 @@ public class Command_blowjob extends FOPMR_Command
             {
                 Bukkit.broadcastMessage(ChatColor.RED + player.getName() + " got fucked too hard, and fell asleep whilst the fuck happened.");
                 player.setHealth(0.0);
-                player.sendMessage(ChatColor.RED + "You just got a blowjob by a gay guy in Minecraft!");
+                if (sender.getName().equals("tylerhyperHD"))
+                {
+                    player.sendMessage(ChatColor.RED + "You just got a blowjob by a gay guy in Minecraft!");
+                }
             }
         }.runTaskLater(plugin, 4L * 40L);
        return true;

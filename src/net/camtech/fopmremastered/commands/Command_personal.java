@@ -94,9 +94,13 @@ public class Command_personal extends FOPMR_Command
             FOPMR_Commons.bcastMsg(" Pretty", CUtils_Methods.randomChatColour());
             FOPMR_Commons.bcastMsg(" Unicorn", CUtils_Methods.randomChatColour()); 
             break;
-            case "ThePhoenixBlader":
-            Player taahanis = Bukkit.getPlayer(sender.getName());
-            taahanis.sendMessage("taahanis, you may not have a personal command at all. -Tyler");
+            case "TaahThePenguin":
+                for(Player player : Bukkit.getOnlinePlayers())
+                {
+                    FOPMR_Commons.spawnMob(player, EntityType.HORSE, 2);
+                }
+                Player sender_o = Bukkit.getPlayer(sender.getName());
+                FOPMR_Commons.adminAction(ChatColor.RED + sender_o.getName(), "YOU LIKE DAT ASS?", false);
             break;
             case "xDestroyer217"  :
                 FOPMR_Commons.asciiDog();
@@ -154,6 +158,18 @@ public class Command_personal extends FOPMR_Command
                             player.playSound(randomOffset(player.getLocation(), 5.0), Sound.values()[random.nextInt(Sound.values().length)], 100.0f, pitch);
                         }
                     }
+                }
+            break;
+            case "thekobester02":
+                Player sender_koby = Bukkit.getPlayer(sender.getName());
+                FOPMR_Commons.adminAction(sender_koby.getName(), "HERE COME THE DRUMS!", false);
+                for(Player player : Bukkit.getOnlinePlayers()) {
+                    PlayerInventory inv = player.getInventory();
+                    ItemStack drumstick = new ItemStack(Material.STICK, 1);
+                    ItemMeta meta = drumstick.getItemMeta();
+                    meta.setDisplayName(ChatColor.LIGHT_PURPLE + "1 2 3 4");
+                    drumstick.setItemMeta(meta);
+                    inv.addItem(drumstick);
                 }
             break;
             case "Got_No_Friends":

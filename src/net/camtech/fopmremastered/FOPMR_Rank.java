@@ -337,11 +337,11 @@ public class FOPMR_Rank
     {
 
         OP("Op", "&8[&cOp&8]&r", 0),
-        ADMIN("Admin", "&8[&eAdmin&8]&r", 1),
+        ADMIN("Junior Admin", "&8[&eJunior Admin&8]&r", 1),
         SUPER("Super Admin", "&8[&bSA&8]&r", 2),
         SENIOR("Senior Admin", "&8[&dSrA&8]&r", 3),
         CONSOLE("CONSOLE", "&8[&aCONSOLE&8]&r", 3),
-        SPECIALEXEC("Special Executive", "&8[&eSpecial Executive&8]&r", 4),
+        SPECIALEXEC("Special Executive", "&8[&6Special Executive&8]&r", 4),
         SYSTEM("System Admin", "&8[&4Sys-Admin&8]&r", 5),
         EFMCREATOR("hfmcreator", "&8[&9HFM-Creator&8]&r", 6),
         OWNER("Owner", "&8[&9Owner&8]&r", 7),

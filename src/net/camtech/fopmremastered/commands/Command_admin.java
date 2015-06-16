@@ -43,16 +43,14 @@ public class Command_admin
                 ArrayList<String> radmins = new ArrayList<>();
                 ArrayList<String> sadmins = new ArrayList<>();
                 ArrayList<String> sradmins = new ArrayList<>();
-                ArrayList<String> execs = new ArrayList<>();
-                ArrayList<String> specs = new ArrayList<>();
+                ArrayList<String> specexecs = new ArrayList<>();
                 ArrayList<String> sysadmins = new ArrayList<>();
                 ArrayList<String> owners = new ArrayList<>();
                 ArrayList<ArrayList<String>> arrays = new ArrayList<>();
                 arrays.add(radmins);
                 arrays.add(sadmins);
                 arrays.add(sradmins);
-                arrays.add(execs);
-                arrays.add(specs);
+                arrays.add(specexecs);
                 arrays.add(sysadmins);
                 arrays.add(owners);
                 sender.sendMessage(ChatColor.AQUA + "HeroFreedom Admins:");
@@ -72,7 +70,7 @@ public class Command_admin
                             sradmins.add(name);
                             break;
                         case SPECIALEXEC:
-                            execs.add(name);
+                            specexecs.add(name);
                             break;
                         case SYSTEM:
                             sysadmins.add(name);
@@ -96,10 +94,8 @@ public class Command_admin
                 sender.sendMessage("        - " + StringUtils.join(sadmins, ", "));
                 sender.sendMessage(ChatColor.LIGHT_PURPLE + "    - Senior Admins:");
                 sender.sendMessage("        - " + StringUtils.join(sradmins, ", "));
-                sender.sendMessage(ChatColor.GOLD + "    - Executives:");
-                sender.sendMessage("        - " + StringUtils.join(execs, ", "));
-                sender.sendMessage(ChatColor.GREEN + "    - Specialists:");
-                sender.sendMessage("        - " + StringUtils.join(specs, ", "));
+                sender.sendMessage(ChatColor.GOLD + "    - Special Executives:");
+                sender.sendMessage("        - " + StringUtils.join(specexecs, ", "));
                 sender.sendMessage(ChatColor.DARK_PURPLE + "    - System Admins:");
                 sender.sendMessage("        - " + StringUtils.join(sysadmins, ", "));
                 sender.sendMessage(ChatColor.DARK_RED + "    - Owners:");

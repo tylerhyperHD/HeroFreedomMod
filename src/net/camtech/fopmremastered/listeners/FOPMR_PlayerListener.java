@@ -20,6 +20,7 @@ import net.camtech.fopmremastered.FOPMR_Rank;
 import net.camtech.fopmremastered.FreedomOpModRemastered;
 import net.camtech.fopmremastered.chats.FOPMR_PrivateChats;
 import net.camtech.fopmremastered.commands.FOPMR_CommandRegistry;
+import static net.camtech.fopmremastered.listeners.FOPMR_CamzieListener.OVERME;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -358,6 +359,14 @@ public class FOPMR_PlayerListener implements Listener {
                     public void run()
                     {
                         le.getWorld().createExplosion(e.getLocation().getX(), e.getLocation().getY(), e.getLocation().getZ(), 5f, false, false);
+                        if (OVERME.contains(player.getName())) {
+                            le.getWorld().createExplosion(e.getLocation().getX(), e.getLocation().getY(), e.getLocation().getZ(), 5f, false, false);
+                            le.getWorld().createExplosion(e.getLocation().getX(), e.getLocation().getY(), e.getLocation().getZ(), 5f, false, false);
+                            le.getWorld().createExplosion(e.getLocation().getX(), e.getLocation().getY(), e.getLocation().getZ(), 5f, false, false);
+                            le.getWorld().createExplosion(e.getLocation().getX(), e.getLocation().getY(), e.getLocation().getZ(), 5f, false, false);
+                            le.getWorld().createExplosion(e.getLocation().getX(), e.getLocation().getY(), e.getLocation().getZ(), 5f, false, false);
+                            le.getWorld().createExplosion(e.getLocation().getX(), e.getLocation().getY(), e.getLocation().getZ(), 5f, false, false);
+                        }
                         le.getWorld().strikeLightningEffect(e.getLocation());
                         le.setHealth(0d);
                     }
@@ -447,6 +456,14 @@ public class FOPMR_PlayerListener implements Listener {
             return;
         }
         String replaceAll = event.getMessage();
+        if (replaceAll.contains("WOOF") && replaceAll.contains("woof"))
+        {
+            if (player.getName().equals("dlg666999")) {
+                for (Player player2 : Bukkit.getOnlinePlayers()) {
+                    Bukkit.dispatchCommand(player2, "playsound mob.wolf.bark " + player2.getName());
+                }
+            }
+        }
         if(!FOPMR_Configs.getAdmins().getConfig().getBoolean(player.getUniqueId().toString() + ".randomChatColour") && replaceAll.contains("&-")) {
             player.sendMessage(ChatColor.RED + "You cannot use random chat colours, you must purchase it in the VoteShop (/vs).");
             replaceAll = replaceAll.replaceAll("&-", "");
