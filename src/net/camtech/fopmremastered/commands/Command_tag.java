@@ -34,6 +34,21 @@ public class Command_tag
             }
         }
         Player player = (Player) sender;
+        if(nick.contains("&k"))
+        {
+            sender.sendMessage(ChatColor.RED + "&k is a prohibited symbol in tags.");
+            return true;
+        }
+        if(nick.contains("&m"))
+        {
+            sender.sendMessage(ChatColor.RED + "&m is a prohibited symbol in tags.");
+            return true;
+        }
+        if(nick.contains("&n"))
+        {
+            sender.sendMessage(ChatColor.RED + "&m is a prohibited symbol in tags.");
+            return true;
+        }
         if(!FOPMR_Configs.getAdmins().getConfig().getBoolean(player.getUniqueId().toString() + ".randomChatColour") && nick.contains("&-"))
         {
             player.sendMessage(ChatColor.RED + "You cannot use random chat colours, you must purchase it in the VoteShop (/vs).");

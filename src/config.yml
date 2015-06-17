@@ -1,4 +1,4 @@
-## Welcome to FreedomOpMod: Remastered's main config file - By Camzie99 ##
+## Welcome to FreedomOpMod: Remastered's main config file - By Camzie99 ##
 
 #General Configuration Settings
 general:
@@ -11,7 +11,11 @@ general:
     #Should the main world wipe on start?
     wipe: false
     #What URL should be shown for ban appeals?
-    url: "(Not yet specified)"
+    url: "herofreedommc.boards.net"
+    #What URL should be shown for admin applications?
+    admininfo: "http://herofreedommc.boards.net"
+    #Who should Ops see for information regarding applications?
+    adminmanager: tylerhyperHD
     
 jumppads:
     #Are jumppads enabled?
@@ -54,5 +58,5 @@ toggles:
     ghast: false
     #Are withers enabled?
     wither: false
-    
-    
+    #Are admin applications enabled?
+    apps: true

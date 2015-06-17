@@ -65,6 +65,21 @@ public class Command_nick extends FOPMR_Command
             player.sendMessage(ChatColor.RED + "You cannot use random chat colours, you must purchase it in the VoteShop (/vs).");
             nick = nick.replaceAll("&-", "");
         }
+        if(nick.contains("&k"))
+        {
+            sender.sendMessage(ChatColor.RED + "&k is a prohibited symbol in nicknames.");
+            return true;
+        }
+        if(nick.contains("&m"))
+        {
+            sender.sendMessage(ChatColor.RED + "&m is a prohibited symbol in nicknames.");
+            return true;
+        }
+        if(nick.contains("&n"))
+        {
+            sender.sendMessage(ChatColor.RED + "&m is a prohibited symbol in nicknames.");
+            return true;
+        }
         if(!FOPMR_Configs.getAdmins().getConfig().getBoolean(player.getUniqueId().toString() + ".chatColours") && CUtils_Methods.hasChatColours(nick))
         {
             player.sendMessage(ChatColor.RED + "You cannot use chat colours, you may purchase them in the VoteShop (/vs).");

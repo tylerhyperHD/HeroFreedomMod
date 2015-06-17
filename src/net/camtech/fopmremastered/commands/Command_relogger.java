@@ -17,24 +17,20 @@ public class Command_relogger extends FOPMR_Command
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
-    {
-            if (!sender.getName().equals("tylerhyperHD") && !sender.getName().equals("Triplewer"))
-        {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (!sender.getName().equals("tylerhyperHD") && !sender.getName().equals("_herobrian35_")) {
             sender.sendMessage(ChatColor.RED + "You do not have permission to this command.");
             return true;
         }
-        if (args.length == 0)
-        {
+        
+        if (args.length == 0) {
         Bukkit.broadcastMessage(ChatColor.RED + "The seniors will be right back-they just have to relog after this reload.");
-        for (Player p : Bukkit.getOnlinePlayers())
-        {
-            if (FOPMR_Rank.isSenior(p))
-            {
-                p.kickPlayer(ChatColor.RED + "Please relog into the server for admin changes to take effect.");
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                if (FOPMR_Rank.isSenior(p)) {
+                    p.kickPlayer(ChatColor.RED + "Please relog into the server for admin changes to take effect.");
+                }
             }
         }
-        }
-return true;
-}
+     return true;
+    }
 }

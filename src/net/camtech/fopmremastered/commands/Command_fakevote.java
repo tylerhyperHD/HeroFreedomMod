@@ -14,7 +14,7 @@ public class Command_fakevote
         sender.sendMessage(sameRandom + "####################");
         sender.sendMessage(sameRandom + "#### Vote Links ####");
         sender.sendMessage(sameRandom + "####################");
-        sender.sendMessage(CUtils_Methods.randomChatColour() + "None yet :(");
+        sender.sendMessage(CUtils_Methods.randomChatColour() + "http://minecraft-server-list.com/server/301738/");
         return true;
     }
 }

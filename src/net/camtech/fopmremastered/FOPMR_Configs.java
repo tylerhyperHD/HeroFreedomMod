@@ -13,6 +13,8 @@ public class FOPMR_Configs
     private static CUtils_Config announcements;
     private static CUtils_Config chats;
     private static CUtils_Config areas;
+    public static boolean isBlowingShitUp = false;
+    public static boolean isKillingShit = false;
 
     public FOPMR_Configs()
     {
@@ -52,6 +54,26 @@ public class FOPMR_Configs
     public static CUtils_Config getMainConfig()
     {
         return mainconfig;
+    }
+    
+    public boolean isBlowingShitUp()
+    {
+        return this.isBlowingShitUp;
+    }
+
+    public void setBlowingShitUp(boolean state)
+    {
+        this.isBlowingShitUp = state;
+    }
+    
+    public boolean isKillingShit()
+    {
+        return this.isKillingShit;
+    }
+
+    public void setKillingShit(boolean state)
+    {
+        this.isKillingShit = state;
     }
     
     public static CUtils_Config getReports()

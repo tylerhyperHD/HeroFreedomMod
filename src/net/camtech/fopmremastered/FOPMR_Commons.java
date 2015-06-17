@@ -2,6 +2,7 @@ package net.camtech.fopmremastered;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import net.camtech.fopmremastered.camutils.CUtils_Methods;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -17,6 +18,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class FOPMR_Commons
 {
     public static ArrayList<String> imposters = new ArrayList<>();
+    public static HashMap<String, String> guests = new HashMap<>();
     public static boolean camOverlordMode = false;
     public static boolean globalFreeze = false;
 

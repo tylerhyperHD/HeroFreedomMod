@@ -33,10 +33,10 @@ public class Command_purple extends FOPMR_Command
         if (!(sender instanceof Player)) {
             return false;
         }
-     if (!sender.getName().equals("tylerhyperHD") && !sender.getName().equals("Triplewer"))
+     if (!sender.getName().equals("tylerhyperHD") && !sender.getName().equals("_herobrian35_"))
         {
             Player sender_p = Bukkit.getPlayer(sender.getName());
-            sender_p.sendMessage(ChatColor.RED + "Only Tyler and Trip may use this command.\nNo permissions for the people who aren't purple.");
+            sender_p.sendMessage(ChatColor.RED + "Only Tyler and Hero may use this command.\nNo permissions for the people who aren't purple.");
             sender_p.setHealth(0.0);
             return true;
         }
@@ -61,26 +61,22 @@ public class Command_purple extends FOPMR_Command
                 {
                 World world = player.getWorld();
                 Location loc = player.getLocation();
-                Player sender_different = Bukkit.getPlayer(sender.getName());
-                FOPMR_Commons.adminAction(sender_different.getName(), "Gracing the world with purple!", false);
                 world.strikeLightningEffect(loc);
-                FOPMR_Commons.adminAction(sender_different.getName(), "Gracing the world with purple!", false);
+                Bukkit.broadcastMessage(ChatColor.RED + sender.getName() + " - Gracing the world with purple!");
                 world.strikeLightningEffect(loc);
-                FOPMR_Commons.adminAction(sender_different.getName(), "Gracing the world with purple!", false);
+                Bukkit.broadcastMessage(ChatColor.RED + sender.getName() + " - Gracing the world with purple!");
                 world.strikeLightningEffect(loc);
-                FOPMR_Commons.adminAction(sender_different.getName(), "Gracing the world with purple!", false);
+                Bukkit.broadcastMessage(ChatColor.RED + sender.getName() + " - Gracing the world with purple!");
                 world.strikeLightningEffect(loc);
-                FOPMR_Commons.adminAction(sender_different.getName(), "Gracing the world with purple!", false);
+                Bukkit.broadcastMessage(ChatColor.RED + sender.getName() + " - Gracing the world with purple!");
                 world.strikeLightningEffect(loc);
-                FOPMR_Commons.adminAction(sender_different.getName(), "Gracing the world with purple!", false);
+                Bukkit.broadcastMessage(ChatColor.RED + sender.getName() + " - Gracing the world with purple!");
                 world.strikeLightningEffect(loc);
-                FOPMR_Commons.adminAction(sender_different.getName(), "Gracing the world with purple!", false);
+                Bukkit.broadcastMessage(ChatColor.RED + sender.getName() + " - Gracing the world with purple!");
                 world.strikeLightningEffect(loc);
-                FOPMR_Commons.adminAction(sender_different.getName(), "Gracing the world with purple!", false);
+                Bukkit.broadcastMessage(ChatColor.RED + sender.getName() + " - Gracing the world with purple!");
                 world.strikeLightningEffect(loc);
-                FOPMR_Commons.adminAction(sender_different.getName(), "Gracing the world with purple!", false);
-                world.strikeLightningEffect(loc);
-                FOPMR_Commons.adminAction(sender_different.getName(), "Gracing the world with purple!", false);
+                Bukkit.broadcastMessage(ChatColor.RED + sender.getName() + " - Gracing the world with purple!");
                 world.strikeLightningEffect(loc);
                 }
         for(Player player : Bukkit.getOnlinePlayers())

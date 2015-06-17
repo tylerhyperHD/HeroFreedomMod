@@ -14,7 +14,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachment;
 
-@CommandParameters(name="givepermission", description="Give a user a custom permission flag!", usage="/givepermission [player] [permission]",rank=Rank.OWNER)
+@CommandParameters(name="givepermission", description="Give a user a custom permission flag!", usage="/givepermission [player] [permission]",rank=Rank.HFMCREATOR)
 public class Command_givepermission
 {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)

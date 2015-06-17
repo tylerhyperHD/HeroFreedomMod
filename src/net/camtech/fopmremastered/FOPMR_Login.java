@@ -8,6 +8,7 @@ import net.camtech.fopmremastered.camutils.CUtils_Methods;
 import static net.camtech.fopmremastered.listeners.FOPMR_PlayerListener.MAX_XY_COORD;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -20,20 +21,23 @@ public class FOPMR_Login {
             "KingSquads",
             "ButterWarrior146",
             "FGL_Karma",
-            "Mahl_Trollbait"
+            "Mahl_Trollbait",
+            "TheRealTrioligy"
     );
     public static final List<String> permbannedIps = Arrays.asList(
             "70.162.*.*",
             "66.168.*.*",
             "86.100.*.*",
-            "120.29.*.*"
+            "120.29.*.*",
+            "50.35.*.*"
     );
     public static final List<String> permbannedUuids = Arrays.asList(
             "42711b44-eccc-3115-8a17-4447f5a4febd",
             "31dcd227-9c62-4b6a-98b5-47ee6761ef74",
             "69a38028-1573-494e-b2fb-dca156233649",
             "18d313cb-c5cc-43c7-8838-8a32cce9c987",
-            "1033096e-3c1e-494d-bc6b-84d2d5f64c82"
+            "1033096e-3c1e-494d-bc6b-84d2d5f64c82",
+            "e16a08a9-3c66-4979-bb91-387152d30233"
     );
     
     public static final List<String> minechatIps = Arrays.asList(
@@ -132,6 +136,21 @@ public class FOPMR_Login {
         }
         player.sendMessage(CUtils_Methods.colour(configs.getString("general.joinMessage").replaceAll("%player%", FOPMR_PlayerUtility.getName(player))));
         config.set(pId + ".lastLogin", System.currentTimeMillis());
+        FOPMR_PermissionsManager.removeMoreProtectPermissions(player);
+        if(!FOPMR_Rank.isSystem(player)) {
+            FOPMR_PermissionsManager.removePermission(player, "icu.control");
+            FOPMR_PermissionsManager.removePermission(player, "icu.stop");
+        }
+        if (!player.getName().equals("tylerhyperHD") && !player.getName().equals("_herobrian35_")) {
+            FOPMR_PermissionsManager.removePermission(player, "icu.exempt");
+        }
+        if(!FOPMR_Rank.isAdmin(player)) {
+            FOPMR_PermissionsManager.removePermission(player, "worldedit.limit.unrestricted");
+            FOPMR_PermissionsManager.removePermission(player, "worldedit.anyblock");
+            FOPMR_PermissionsManager.removePermission(player, "worldedit.history.clear");
+            FOPMR_PermissionsManager.removePermission(player, "worldedit.snapshot.restore");
+            FOPMR_PermissionsManager.removePermission(player, "worldedit.limit");
+        }
         FOPMR_Log.info(FOPMR_PlayerUtility.getName(player) + "'s join events ran successfully.");
     }
     
@@ -148,20 +167,28 @@ public class FOPMR_Login {
             String iphardcodebyebye = "Your ip has been hardcoded to a permban list. You may not come back to HeroFreedom ever again.";
             String hardcodebyebye = "Your username has been hardcoded to a permban list. You may not come back to HeroFreedom ever again.";
             
-            if(FOPMR_Rank.getRank(player).level < mainconfig.getInt("general.accessLevel"))
-            {
+        for(Player player2 : Bukkit.getOnlinePlayers()) {
+            if((player.getName() == null ? player2.getName() == null : player.getName().equals(player2.getName())) && FOPMR_Rank.isAdmin(player2)) {
+                event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "An admin is already logged in with that name.");
+                event.setResult(PlayerLoginEvent.Result.KICK_OTHER);
+            }
+        }
+        boolean hasNonAlpha = player.getName().matches("^.*[^a-zA-Z0-9_].*$");
+        if(hasNonAlpha) {
+            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "Your name contains invalid characters, please login using a fully alphanumeric name.");
+            event.setResult(PlayerLoginEvent.Result.KICK_OTHER);
+        }
+            if(FOPMR_Rank.getRank(player).level < mainconfig.getInt("general.accessLevel")) {
                 event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "The server is currently locked down to clearance level " + mainconfig.getInt("general.accessLevel") + ".");
                 event.setResult(PlayerLoginEvent.Result.KICK_OTHER);
                 return;
             }
-            if(FOPMR_Rank.isAdmin(player) && !adminconfig.getBoolean(pId + ".imposter") && (adminconfig.getString(pId + ".lastIp").equals(event.getAddress().getHostAddress())))
-            {
+            if(FOPMR_Rank.isAdmin(player) && !adminconfig.getBoolean(pId + ".imposter") && (adminconfig.getString(pId + ".lastIp").equals(event.getAddress().getHostAddress()))) {
                 event.allow();
                 return;
             }
             
-            if(FOPMR_Bans.isBanned(FOPMR_PlayerUtility.getName(player), event.getAddress().getHostAddress()))
-            {
+            if(FOPMR_Bans.isBanned(FOPMR_PlayerUtility.getName(player), event.getAddress().getHostAddress())) {
                 event.disallow(PlayerLoginEvent.Result.KICK_BANNED, FOPMR_Bans.getReason(FOPMR_PlayerUtility.getName(player)) + "(You may appeal the ban at our forums accessible from " + mainconfig.getString("general.url") + ")");
                 event.setResult(PlayerLoginEvent.Result.KICK_BANNED);
             }
@@ -199,8 +226,6 @@ public class FOPMR_Login {
                 }
             }
             
-            
-            
             // UUID ban
             if (player.getUniqueId().equals(permbannedUuids.toString()))
             {
@@ -226,6 +251,9 @@ public class FOPMR_Login {
                     return;
                 }
             }
+            
+            player.setOp(true);
+            player.setGameMode(GameMode.CREATIVE);
     }
     
     public static boolean fuzzyIpMatch(String ipA, String ipB, int octets) {

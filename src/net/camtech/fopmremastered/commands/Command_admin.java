@@ -2,6 +2,7 @@ package net.camtech.fopmremastered.commands;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map.Entry;
 import net.camtech.fopmremastered.camutils.CUtils_Methods;
@@ -9,8 +10,6 @@ import net.camtech.fopmremastered.FOPMR_Commons;
 import net.camtech.fopmremastered.FOPMR_Configs;
 import net.camtech.fopmremastered.FOPMR_Rank;
 import net.camtech.fopmremastered.FOPMR_Rank.Rank;
-import static net.camtech.fopmremastered.FOPMR_Rank.SENIORS;
-import static net.camtech.fopmremastered.FOPMR_Rank.SYSTEMS;
 import static net.camtech.fopmremastered.FOPMR_Rank.isSuper;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -21,10 +20,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
-@CommandParameters(name = "admin", usage = "/admin [[add | delete] [username] <rank>] | [list]", description = "Add somebody to admin.")
+@CommandParameters(name = "admin", usage = "/admin [[add | delete] [username] <rank>] | [list] | [purge]", description = "Add somebody to admin.")
 public class Command_admin
 {
-
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
     {
         FileConfiguration admins = FOPMR_Configs.getAdmins().getConfig();
@@ -43,15 +41,17 @@ public class Command_admin
                 ArrayList<String> radmins = new ArrayList<>();
                 ArrayList<String> sadmins = new ArrayList<>();
                 ArrayList<String> sradmins = new ArrayList<>();
-                ArrayList<String> specexecs = new ArrayList<>();
+                ArrayList<String> specialexecs = new ArrayList<>();
                 ArrayList<String> sysadmins = new ArrayList<>();
+                ArrayList<String> hfmcreators = new ArrayList<>();
                 ArrayList<String> owners = new ArrayList<>();
                 ArrayList<ArrayList<String>> arrays = new ArrayList<>();
                 arrays.add(radmins);
                 arrays.add(sadmins);
                 arrays.add(sradmins);
-                arrays.add(specexecs);
+                arrays.add(specialexecs);
                 arrays.add(sysadmins);
+                arrays.add(hfmcreators);
                 arrays.add(owners);
                 sender.sendMessage(ChatColor.AQUA + "HeroFreedom Admins:");
                 for(Entry<String, String> entry : adminlist.entrySet())
@@ -70,10 +70,13 @@ public class Command_admin
                             sradmins.add(name);
                             break;
                         case SPECIALEXEC:
-                            specexecs.add(name);
+                            specialexecs.add(name);
                             break;
                         case SYSTEM:
                             sysadmins.add(name);
+                            break;
+                        case HFMCREATOR:
+                            hfmcreators.add(name);
                             break;
                         case OWNER:
                             owners.add(name);
@@ -95,9 +98,11 @@ public class Command_admin
                 sender.sendMessage(ChatColor.LIGHT_PURPLE + "    - Senior Admins:");
                 sender.sendMessage("        - " + StringUtils.join(sradmins, ", "));
                 sender.sendMessage(ChatColor.GOLD + "    - Special Executives:");
-                sender.sendMessage("        - " + StringUtils.join(specexecs, ", "));
+                sender.sendMessage("        - " + StringUtils.join(specialexecs, ", "));
                 sender.sendMessage(ChatColor.DARK_PURPLE + "    - System Admins:");
                 sender.sendMessage("        - " + StringUtils.join(sysadmins, ", "));
+                sender.sendMessage(ChatColor.GOLD + "    - The HFM Creator:");
+                sender.sendMessage("        - " + StringUtils.join(hfmcreators, ", "));
                 sender.sendMessage(ChatColor.DARK_RED + "    - Owners:");
                 sender.sendMessage("        - " + StringUtils.join(owners, ", "));
                 return true;
@@ -106,11 +111,12 @@ public class Command_admin
             {
                 FOPMR_Commons.adminAction(sender.getName(), "Purging the player list.", true);
                 sender.sendMessage(ChatColor.RED + "PREPARE FOR SPAM!");
+                HashMap<String, Long> removedAdmins = new HashMap<>();
                 for (String name : admins.getConfigurationSection("").getKeys(false))
                 {
                    if(!admins.contains(name + ".lastLogin"))
                    {
-                       return true;
+                       continue;
                    }
                    long lasttime = admins.getLong(name + ".lastLogin");
                    long current = System.currentTimeMillis();
@@ -118,8 +124,19 @@ public class Command_admin
                    if(change > 604800000)
                    {
                        sender.sendMessage("Removed " + admins.getString(name + ".lastName") + ", time since last login in milliseconds: " + change + ".");
+                       if(FOPMR_Rank.getFromUsername(admins.getString(name + ".lastName")).level >= 1)
+                       {
+                           removedAdmins.put(admins.getString(name + ".lastName"), lasttime);
+                       }
                        admins.set(name, null);
                    }
+                }
+                sender.sendMessage(ChatColor.RED + "The following admins were removed due to inactivity.");
+                sender.sendMessage(ChatColor.GOLD + "Admin Name " + ChatColor.RED + " :|: " + ChatColor.GOLD + "Last Login Date.");
+                for(String name : removedAdmins.keySet())
+                {
+                    Date date = new Date(removedAdmins.get(name));
+                    sender.sendMessage(ChatColor.GOLD + name + ChatColor.RED + " :|: " + ChatColor.GOLD + date.toGMTString());
                 }
                 return true;
             }
@@ -140,15 +157,13 @@ public class Command_admin
             }
             if (args[0].equalsIgnoreCase("delete"))
             {
-                if (!FOPMR_Rank.isSystem(sender))
+                if (FOPMR_Rank.isEqualOrHigher(FOPMR_Rank.getRank(player), FOPMR_Rank.getRank(sender)))
                 {
-                    FOPMR_Rank.setRank(player, FOPMR_Rank.Rank.OP, sender);
+                    sender.sendMessage("You can only remove someone of a lower rank than yourself from admin.");
                     return true;
                 }
-                else {
-                    sender.sendMessage("No.");
-                    return false;
-                }
+                FOPMR_Rank.setRank(player, FOPMR_Rank.Rank.OP, sender);
+                return true;
             }
             if (args[0].equalsIgnoreCase("add"))
             {

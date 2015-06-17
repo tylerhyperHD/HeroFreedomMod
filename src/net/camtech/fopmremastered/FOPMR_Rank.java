@@ -343,7 +343,7 @@ public class FOPMR_Rank
         CONSOLE("CONSOLE", "&8[&aCONSOLE&8]&r", 3),
         SPECIALEXEC("Special Executive", "&8[&6Special Executive&8]&r", 4),
         SYSTEM("System Admin", "&8[&4Sys-Admin&8]&r", 5),
-        EFMCREATOR("hfmcreator", "&8[&9HFM-Creator&8]&r", 6),
+        HFMCREATOR("hfmcreator", "&8[&9HFM-Creator&8]&r", 6),
         OWNER("Owner", "&8[&9Owner&8]&r", 7),
         IMPOSTER("Imposter", "&7[Imp]&r", -1);
 

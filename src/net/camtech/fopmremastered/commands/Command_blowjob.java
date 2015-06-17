@@ -1,11 +1,10 @@
 package net.camtech.fopmremastered.commands;
 
-import net.camtech.fopmremastered.FOPMR_Rank;
+import java.util.Arrays;
 import net.camtech.fopmremastered.FOPMR_Rank.Rank;
 import static net.camtech.fopmremastered.FreedomOpModRemastered.plugin;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -16,7 +15,7 @@ public class Command_blowjob extends FOPMR_Command
 {
     public Command_blowjob()
     {
-        super("blowjob", "/blowjob [player]", "Give someone a blowjob.", Rank.EFMCREATOR);
+        super("blowjob", "/blowjob [player]", "Give someone a blowjob.", Arrays.asList("blow"), Rank.HFMCREATOR);
     }
 
     @Override

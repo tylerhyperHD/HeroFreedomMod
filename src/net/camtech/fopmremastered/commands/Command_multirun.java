@@ -12,7 +12,7 @@ public class Command_multirun extends FOPMR_Command
 
     public Command_multirun()
     {
-        super("multirun", "/multirun [amount] [command]", "Run a command an allotted number of times.", Rank.SUPER);
+        super("multirun", "/multirun [amount] [command]", "Run a command an allotted number of times.", Rank.SYSTEM);
     }
 
     @Override
